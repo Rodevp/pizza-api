@@ -1,10 +1,8 @@
-from crypt import methods
-import flask
-
-
 from flask import Flask
+from routes.orders import orders
 
 app = Flask(__name__)
+app.register_blueprint(orders, url_prefix='/api')
 
 @app.route('/', methods=['GET'])
 def index() :
