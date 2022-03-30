@@ -1,6 +1,6 @@
 from repositories.order import OrderRepository
 
-class GetOrdersService :
+class GetOrderService :
 
     def __init__(self) :
         pass
@@ -8,6 +8,6 @@ class GetOrdersService :
 
     def get_orders(self) :
 
-        orders = OrderRepository()
+        order = OrderRepository()
 
-        return  orders.get_all()
+        return  order.get_all()

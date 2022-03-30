@@ -1,4 +1,4 @@
-from services.orders import GetOrdersService
+from services.orders import GetOrderService
 
 
 class GetOrders :
@@ -8,6 +8,6 @@ class GetOrders :
 
     def get(self) :
 
-        order_service = GetOrdersService()
+        order_service = GetOrderService()
 
         return  order_service.get_orders()
