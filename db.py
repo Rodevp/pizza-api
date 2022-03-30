@@ -7,6 +7,9 @@ def init_db():
         client = MongoClient('localhost', 27017)
         
         print('***connect***')
+
+        print(client['test-database'])
+
         return client
 
     except Exception as err:
