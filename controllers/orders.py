@@ -1,3 +1,6 @@
+from services.orders import GetOrdersService
+
+
 class GetOrders :
 
     def __init__(self):
@@ -5,7 +8,6 @@ class GetOrders :
 
     def get(self) :
 
-        return [{
-            "order-id": 0,
-            "order-quantity": 3
-        }]
+        order_service = GetOrdersService()
+
+        return  order_service.get_orders()
