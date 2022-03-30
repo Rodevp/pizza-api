@@ -1,3 +1,5 @@
+from repositories.order import OrderRepository
+
 class GetOrdersService :
 
     def __init__(self) :
@@ -6,7 +8,6 @@ class GetOrdersService :
 
     def get_orders(self) :
 
-        return [{
-            "order-id": 0,
-            "order-quantity": 3
-        }] 
+        orders = OrderRepository()
+
+        return  orders.get_all()
