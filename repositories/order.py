@@ -35,7 +35,6 @@ class OrderRepository :
 
     def get(self, id) :
         
-        #print('consulta -> ',  self._db['orders'].find_one( { '_id' : id } ) )
         order = json.loads( json_util.dumps( self._db['orders'].find_one( {'_id': id } ) ) )
         return order
 

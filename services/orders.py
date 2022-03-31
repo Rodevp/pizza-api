@@ -29,6 +29,6 @@ class GetOrderService :
         order = order_repository.get(id)
 
         if order == None :
-            raise ValueError('Id no valido')
+            raise ValueError('id no valido')
 
         return order
