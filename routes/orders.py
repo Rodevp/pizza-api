@@ -8,7 +8,15 @@ orders = Blueprint('orders', __name__)
 @orders.route('/orders', methods=['GET'])
 def get_orders() :
     
-    orders = GetOrders()
-    data = orders.get()
+    try :
+        
+        orders = GetOrders()
+        data = orders.get()
+        
+        return jsonify(data), 200
 
-    return jsonify(data), 200
+    except ValueError as err :
+        
+        return jsonify({
+            'message': err
+        }),  500

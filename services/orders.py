@@ -1,4 +1,3 @@
-from models.order import OrderModel
 from repositories.order import OrderRepository
 
 class GetOrderService :
@@ -9,6 +8,12 @@ class GetOrderService :
 
     def get_orders(self) :
 
-        order_repository = OrderRepository()
+        try :
+            order_repository = OrderRepository()
+        except Exception as err :
+            raise ValueError('server internal error')
+
+        if len( order_repository.get_all() ) == 0 :
+            return []
     
         return order_repository.get_all()

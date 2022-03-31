@@ -8,6 +8,10 @@ class GetOrders :
 
     def get(self) :
 
-        order_service = GetOrderService()
-
+        try :
+            order_service = GetOrderService()
+        except ValueError as err :
+            
+            raise ValueError(err)
+        
         return  order_service.get_orders()
