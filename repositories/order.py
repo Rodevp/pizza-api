@@ -2,6 +2,8 @@ from db import init_db
 from bson import json_util
 import json
 
+from models.order import OrderModel
+
 class OrderRepository :
 
     _client = init_db()
@@ -9,14 +11,23 @@ class OrderRepository :
     def __init__(self) :
         pass
 
+
     def get_all(self) :
 
         db = self._client['pizzadb']
-        collection = db['orders']
+        collection = json.loads( json_util.dumps( db['orders'].find() ) )
         list_orders = []
 
-        for item in collection.find() :
-            list_orders.append(item)
+        for item in collection :
+            order_model = OrderModel(item['namePizza'], item['quantity'], item['_id']['$oid'])
+            
+            order = {
+                'namePizza': order_model.name_pizza,
+                'quantity': order_model.quantity,
+                'id': order_model.id
+            }
+
+            list_orders.append(order)
 
 
-        return json.loads( json_util.dumps(list_orders) )
+        return list_orders

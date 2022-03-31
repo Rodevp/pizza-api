@@ -1,3 +1,4 @@
+from models.order import OrderModel
 from repositories.order import OrderRepository
 
 class GetOrderService :
@@ -8,6 +9,6 @@ class GetOrderService :
 
     def get_orders(self) :
 
-        order = OrderRepository()
-
-        return  order.get_all()
+        order_repository = OrderRepository()
+    
+        return order_repository.get_all()

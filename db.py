@@ -8,8 +8,6 @@ def init_db():
         
         print('***connect***')
 
-        print(client['test-database'])
-
         return client
 
     except Exception as err:
