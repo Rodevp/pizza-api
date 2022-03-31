@@ -11,7 +11,7 @@ class GetAllPizzasServices :
         try :
             pizza_repository = PizzaRepository()
         except Exception as err : 
-            raise ValueError(':x')
+            raise ValueError('error')
 
         if len( pizza_repository.get_all() ) == 0 :
             return []

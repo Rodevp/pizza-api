@@ -6,5 +6,14 @@ pizzas = Blueprint('pizza', __name__)
 
 @pizzas.route('/pizzas', methods=['GET'])
 def get_all() :
-    pizzas = PizzaController()
-    return jsonify( pizzas.get_pizzas() ), 200
+    
+    try :
+    
+        pizzas = PizzaController()
+        return jsonify( pizzas.get_pizzas() ), 200
+    
+    except ValueError as err :
+        
+        return jsonify({
+            'message': f'{err}'
+        }), 400

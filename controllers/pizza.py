@@ -9,6 +9,9 @@ class PizzaController:
 
     def get_pizzas(self) :
 
-        #TODO: manejar error
-        pizza_service = GetAllPizzasServices()
+        try :
+            pizza_service = GetAllPizzasServices()
+        except ValueError as err :
+            raise ValueError(err)
+        
         return pizza_service.get()
