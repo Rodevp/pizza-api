@@ -7,6 +7,7 @@ from models.order import OrderModel
 class OrderRepository :
 
     _client = init_db()
+    _db = _client['pizzadb']
 
     def __init__(self) :
         pass
@@ -14,12 +15,11 @@ class OrderRepository :
 
     def get_all(self) :
 
-        db = self._client['pizzadb']
-        collection = json.loads( json_util.dumps( db['orders'].find() ) )
+        collection = json.loads( json_util.dumps( self._db['orders'].find() ) )
         list_orders = []
 
         for item in collection :
-            order_model = OrderModel(item['namePizza'], item['quantity'], item['_id']['$oid'])
+            order_model = OrderModel(item['quantity'], item['namePizza'], item['_id']['$oid'])
             
             order = {
                 'namePizza': order_model.name_pizza,
@@ -31,3 +31,11 @@ class OrderRepository :
 
 
         return list_orders
+
+
+    def get(self, id) :
+        
+        #print('consulta -> ',  self._db['orders'].find_one( { '_id' : id } ) )
+        order = json.loads( json_util.dumps( self._db['orders'].find_one( {'_id': id } ) ) )
+        return order
+

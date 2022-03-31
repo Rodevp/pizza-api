@@ -15,3 +15,14 @@ class GetOrders :
             raise ValueError(err)
         
         return  order_service.get_orders()
+    
+
+    def get_one(self, id) :
+
+        try :
+            order_service = GetOrderService()
+        except ValueError as err :
+            
+            raise ValueError(err)
+
+        return order_service.get_order(id)

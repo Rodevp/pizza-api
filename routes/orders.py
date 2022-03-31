@@ -20,3 +20,19 @@ def get_orders() :
         return jsonify({
             'message': err
         }),  500
+    
+
+@orders.route('/orders/<id>', methods=['GET'])
+def get_order(id) :
+    try :
+        
+        orders = GetOrders()
+        data = orders.get_one(id)
+        
+        return jsonify(data), 200
+
+    except ValueError as err :
+        
+        return jsonify({
+            'message': f'{err}'
+        }),  400
