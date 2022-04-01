@@ -19,7 +19,7 @@ instalar las dependencias
 ``
 ### Windows
 ``
-    virtual venv 
+    virtualvenv venv 
 ``
 como segundo paso: 
 ``
