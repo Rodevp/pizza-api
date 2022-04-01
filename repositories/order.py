@@ -1,5 +1,5 @@
 from db import init_db
-from bson import json_util
+from bson import json_util, ObjectId
 import json
 
 from models.order import OrderModel
@@ -35,6 +35,6 @@ class OrderRepository :
 
     def get(self, id) :
         
-        order = json.loads( json_util.dumps( self._db['orders'].find_one( {'_id': id } ) ) )
+        order = json.loads( json_util.dumps( self._db['orders'].find_one( {'_id': ObjectId(id) } ) ) )
         return order
 

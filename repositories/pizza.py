@@ -30,7 +30,3 @@ class PizzaRepository :
             list_pizzas.append(pizza)
         
         return list_pizzas
-
-
-    def get_one(self) :
-        pass
